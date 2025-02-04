@@ -7,4 +7,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "run:app"]
+# השתמש במשתנה סביבה PORT או בפורט ברירת מחדל 8080
+CMD gunicorn "run:app" --bind "0.0.0.0:${PORT:-8080}"
